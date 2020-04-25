@@ -60,6 +60,7 @@
         "OrchardCore.Autoroute",
         "OrchardCore.Html",
         "OrchardCore.ContentFields",
+        "OrchardCore.ContentPermissions",
         "OrchardCore.ContentPreview",
         "OrchardCore.Contents",
         "OrchardCore.Contents.FileContentDefinition",
@@ -382,6 +383,21 @@
                     "BlogPost"
                   ]
                 }
+              }
+            },
+            {
+              "PartName": "ContentPermissionsPart",
+              "Name": "ContentPermissionsPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "5"
+                },
+                "GraphQLContentTypePartSettings": {},
+                "ContentPermissionsPartSettings": {
+                  "RedirectUrl": "/not-authorized",
+                  "HasRedirectUrl": true
+                },
+                "ContentIndexSettings": {}
               }
             }
           ]
@@ -739,6 +755,18 @@
             "ContentPartSettings": {
               "Attachable": true,
               "Description": "Provides a Disqus comment section for your content item."
+            }
+          },
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "ContentPermissionsPart",
+          "Settings": {
+            "ContentPartSettings": {
+              "Attachable": true,
+              "DisplayName": "Content Permissions",
+              "Description": "Provides ability to control which roles can view content item.",
+              "DefaultPosition": "10"
             }
           },
           "ContentPartFieldDefinitionRecords": []
@@ -1227,6 +1255,17 @@
                 "home-bg.jpg"
               ]
             }
+          },
+          "ContentPermissionsPart": {
+            "Roles": [
+              "Moderator",
+              "Authenticated",
+              "Author",
+              "Contributor",
+              "Administrator",
+              "Editor"
+            ],
+            "Enabled": true
           }
         },
         {
@@ -1405,6 +1444,33 @@
             "Subtitle": {
               "Text": "Thank You for your Message"
             }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Article",
+          "DisplayText": "Not Authorized",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUsername')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Article": {
+            "Subtitle": {
+              "Text": "User is not authorized to access this resource"
+            }
+          },
+          "AutoroutePart": {
+            "Path": "not-authorized",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "HtmlBodyPart": {
+            "Html": "<p>We apologize for your inconvenience. Unfortunately, you are not authorized to access this resource. Please <a href=\"/Login\">log in</a> or <a href=\"/Register\">register</a> and create a user account.</p>"
+          },
+          "TitlePart": {
+            "Title": "Not Authorized"
           }
         },
         {

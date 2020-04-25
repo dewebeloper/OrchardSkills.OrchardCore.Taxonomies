@@ -1,10 +1,9 @@
-using System;
-using System.Threading.Tasks;
+using OrchardCore.Disqus.Models;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
-using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
-using OrchardCore.Disqus.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace OrchardCore.Disqus.Settings
 {

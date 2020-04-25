@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OrchardCore.ContentManagement;
-using OrchardCore.Disqus.Models;
 using OrchardCore.Disqus.Settings;
+using OrchardCore.Disqus.Models;
 
 namespace OrchardCore.Disqus.ViewModels
 {
@@ -9,7 +9,7 @@ namespace OrchardCore.Disqus.ViewModels
     {
         public string ShortName { get; set; }
 
-        public bool ShowComments { get; set; }
+        public bool HideComments { get; set; }
 
         [BindNever]
         public ContentItem ContentItem { get; set; }

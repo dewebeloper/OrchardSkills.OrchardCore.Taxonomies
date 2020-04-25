@@ -5,8 +5,8 @@ using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Disqus.Models;
-using OrchardCore.Disqus.Settings;
 using OrchardCore.Disqus.ViewModels;
+using OrchardCore.Disqus.Settings;
 
 namespace OrchardCore.Disqus.Drivers
 {
@@ -38,7 +38,7 @@ namespace OrchardCore.Disqus.Drivers
         {
             var settings = GetDisqusPartSettings(model);
 
-            await updater.TryUpdateModelAsync(model, Prefix, t => t.ShowComments);
+            await updater.TryUpdateModelAsync(model, Prefix, t => t.HideComments);
             
             return Edit(model);
         }
@@ -52,17 +52,15 @@ namespace OrchardCore.Disqus.Drivers
             return settings;
         }
 
-        private Task BuildViewModel(DisqusPartViewModel model, DisqusPart part)
+        private void BuildViewModel(DisqusPartViewModel model, DisqusPart part)
         {
             var settings = GetDisqusPartSettings(part);
 
             model.ContentItem = part.ContentItem;
             model.ShortName = settings.ShortName;
-            model.ShowComments = part.ShowComments;
+            model.HideComments = part.HideComments;
             model.DisqusPart = part;
             model.Settings = settings;
-
-            return Task.CompletedTask;
         }
     }
 }
